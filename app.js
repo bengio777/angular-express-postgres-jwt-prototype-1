@@ -25,6 +25,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+// Catch all to send index up on every route not hit for angular
+app.get('/*', (req, res, next) => {
+  const options = {
+    root: path.join(__dirname, 'public')
+  }
+
+  req.sendFile('index.html', options, (err) => {
+    if(err) return next(err)
+
+    console.log('sent index.html up to the client!!!');
+  })
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
