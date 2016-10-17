@@ -1,5 +1,5 @@
 angular.module('jwt-prototype')
-.controller('login.controller.js', function ($scope, $http) {
+.controller('login.controller.js', function ($scope, $http, $location) {
   $scope.create = (form) => {
     const user = {
       username: form.createAccount.username,
@@ -8,7 +8,8 @@ angular.module('jwt-prototype')
 
     $http.post('/users/create', user)
       .then((res) => {
-        localStorage.setItem('user', JSON.stringify(res))
+        localStorage.setItem('user', JSON.stringify(res.data))
+        $location.path('/dashboard')
       })
       .catch((err) => {
         console.error(err);
