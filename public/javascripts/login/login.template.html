@@ -1,6 +1,6 @@
 <h1>login</h1>
 
-<form name="login">
+<form name="login" ng-submit="loginSubmitted(this)">
   <div>
     <label for="login-username">Username</label>
     <input type="text" ng-model="login.username">
@@ -16,7 +16,7 @@
 
 <h1>create account</h1>
 
-<form name="createAccount">
+<form name="createAccount" ng-submit="create(this)">
   <div>
     <label for="createAccount-username">Username</label>
     <input type="text" ng-model="createAccount.username">
