@@ -8,7 +8,7 @@ angular.module('jwt-prototype')
 
     $http.post('/users/create', user)
       .then((res) => {
-        console.log(res);
+        localStorage.setItem('user', JSON.stringify(res))
       })
       .catch((err) => {
         console.error(err);
